@@ -1,0 +1,270 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+
+    name[Group1] = "English (US, halfqwerty)" ;
+
+    // This default halfqwerty layout can be used as a base for your
+    // one-hand typing needs. It defines a mirrored qwerty layout on
+    // the third shift level for almost all keys.
+    //
+    // Due to the limited available space on just half of a keyboard,
+    // the following keys have no mirrored mapping:
+    //
+    // - leftbracket, rightbracket, backslash
+    // - arrow keys (who needs those?)
+    // - home, end, page up/down
+    // - delete
+    //
+    // In order to make the halfqwerty layout available to the X
+    // Keyboard Extension, copy halfqwerty.xkb to the symbols folder
+    // of XKB, usually done like this:
+    //
+    //    $ sudo cp halfqwerty.xkb /usr/share/X11/xkb/symbols/halfqwerty
+    //    (note: drop the .xkb file extension)
+    //
+    // You can now try the layout with 'setxkbmap -layout halfqwerty'.
+    //
+    // In order to make the halfqwerty layout available to the
+    // keyboard configuration of your desktop environment, modify the
+    // XKB rules of your system:
+    //
+    //    - open /usr/share/X11/xkb/rules/evdev.xml in your favourite text editor
+    //    - find the <layoutList> element
+    //    - add the halfqwerty layout:
+    //
+    //         <layout>
+    //           <configItem>
+    //             <name>halfqwerty</name>
+    //             <description>English (US, halfqwerty)</description>
+    //             <languageList>
+    //               <iso639Id>eng</iso639Id>
+    //             </languageList>
+    //           </configItem>
+    //           <variantList>
+    //             <variant>
+    //               <configItem>
+    //                 <name>caps</name>
+    //                 <description>English (US, halfqwerty using caps modifier)</description>
+    //               </configItem>
+    //             </variant>
+    //             <variant>
+    //               <configItem>
+    //                 <name>space</name>
+    //                 <description>English (US, halfqwerty assuming space modifier)</description>
+    //               </configItem>
+    //             </variant>
+    //           </variantList>
+    //         </layout>
+    //
+    // You have three options to actually start one-handed typing:
+    //
+    // 1. Use this basic layout and map your own preferred key (or
+    //    pedal, of course) to ISO_Level3_Shift.
+    //
+    // 2. Use the halfqwerty(caps) variant and start one-handed typing
+    //    right away, similar to Randall Munroes 'mirrorboard':
+    //
+    //    See https://blog.xkcd.com/2007/08/14/mirrorboard-a-one-handed-keyboard-layout-for-the-lazy/
+    //
+    //    Note that our halfqwerty layout differs slightly from the
+    //    one explained in the XKCD blog post. See inline
+    //    documentation below.
+    //
+    // 3. Use the halfqwerty(space) variant which allows using the
+    //    space bar to switch to the mirrored layout. This variant
+    //    requires additional configuration, see inline documentation
+    //    below.
+    
+    include "level3(modifier_mapping)"
+
+    key <TLDE> { [        grave,  asciitilde,      grave,  asciitilde ] } ;
+
+    key <AE01> { [            1,      exclam,      equal,        plus ] } ;
+    key <AE02> { [            2,          at,      minus,  underscore ] } ;
+    key <AE03> { [            3,  numbersign,          0,  parenright ] } ;
+    key <AE04> { [            4,      dollar,          9,   parenleft ] } ;
+    key <AE05> { [            5,     percent,          8,    asterisk ] } ;
+    key <AE06> { [            6, asciicircum,          7,   ampersand ] } ;
+    key <AE07> { [            7,   ampersand,          6, asciicircum ] } ;
+    key <AE08> { [            8,    asterisk,          5,     percent ] } ;
+    key <AE09> { [            9,   parenleft,          4,      dollar ] } ;
+    key <AE10> { [            0,  parenright,          3,  numbersign ] } ;
+    key <AE11> { [        minus,  underscore,          2,          at ] } ;
+    key <AE12> { [        equal,        plus,          1,      exclam ] } ;
+
+    key <AD01> { [            q,           Q,          p,           P ] } ;
+    key <AD02> { [            w,           W,          o,           O ] } ;
+    key <AD03> { [            e,           E,          i,           I ] } ;
+    key <AD04> { [            r,           R,          u,           U ] } ;
+    key <AD05> { [            t,           T,          y,           Y ] } ;
+    key <AD06> { [            y,           Y,          t,           T ] } ;
+    key <AD07> { [            u,           U,          r,           R ] } ;
+    key <AD08> { [            i,           I,          e,           E ] } ;
+    key <AD09> { [            o,           O,          w,           W ] } ;
+    key <AD10> { [            p,           P,          q,           Q ] } ;
+    key <AD11> { [  bracketleft,   braceleft                          ] } ;
+    key <AD12> { [ bracketright,  braceright                          ] } ;
+
+    key <AC01> { [            a,           A,  semicolon,       colon ] } ;
+    key <AC02> { [            s,           S,          l,           L ] } ;
+    key <AC03> { [            d,           D,          k,           K ] } ;
+    key <AC04> { [            f,           F,          j,           J ] } ;
+    key <AC05> { [            g,           G,          h,           H ] } ;
+    key <AC06> { [            h,           H,          g,           G ] } ;
+    key <AC07> { [            j,           J,          f,           F ] } ;
+    key <AC08> { [            k,           K,          d,           D ] } ;
+    key <AC09> { [            l,           L,          s,           S ] } ;
+    key <AC10> { [    semicolon,       colon,          a,           A ] } ;
+    key <AC11> { [   apostrophe,    quotedbl                          ] } ;
+
+    key <AB01> { [            z,           Z,      slash,    question ] } ;
+    key <AB02> { [            x,           X,     period,     greater ] } ;
+    key <AB03> { [            c,           C,      comma,        less ] } ;
+    key <AB04> { [            v,           V,          m,           M ] } ;
+    key <AB05> { [            b,           B,          n,           N ] } ;
+    key <AB06> { [            n,           N,          b,           B ] } ;
+    key <AB07> { [            m,           M,          v,           V ] } ;
+    key <AB08> { [        comma,        less,          c,           C ] } ;
+    key <AB09> { [       period,     greater,          x,           X ] } ;
+    key <AB10> { [        slash,    question,          z,           Z ] } ;
+
+    key <BKSL> { [    backslash,         bar,        Tab,        Tab  ] } ;
+
+    key <FK01> { [           F1,          F1,        F12,        F12  ] } ;
+    key <FK02> { [           F2,          F2,        F11,        F11  ] } ;
+    key <FK03> { [           F3,          F3,        F10,        F10  ] } ;
+    key <FK04> { [           F4,          F4,         F9,         F9  ] } ;
+    key <FK05> { [           F5,          F5,         F8,         F8  ] } ;
+    key <FK06> { [           F6,          F6,         F7,         F7  ] } ;
+    key <FK07> { [           F7,          F7,         F6,         F6  ] } ;
+    key <FK08> { [           F8,          F8,         F5,         F5  ] } ;
+    key <FK09> { [           F9,          F9,         F4,         F4  ] } ;
+    key <FK10> { [          F10,         F10,         F3,         F3  ] } ;
+    key <FK11> { [          F11,         F11,         F2,         F2  ] } ;
+    key <FK12> { [          F12,         F12,         F1,         F1  ] } ;
+};
+
+partial modifier_keys
+xkb_symbols "caps" {
+
+    // The halfqwerty(caps) layout works out-of-the-box requiring no
+    // additional tooling or configuration. Instead of leaving it up
+    // to the user to define a level3 shift modifier it defines the
+    // caps lock key as such a modifier.
+    //
+    // Special mappings for this variant are:
+    //
+    //    |------------------+-----------|
+    //    | KEY              | FUNCTION  |
+    //    |------------------+-----------|
+    //    | `                | backspace |
+    //    | SHIFT + `        | ~         |
+    //    | CAPS + SHIFT + ` | `         |
+    //    | CAPS + space     | return    |
+    //    |------------------+-----------|
+
+    include "halfqwerty(basic)"
+
+    name[Group1] = "English (US, halfqwerty using caps modifier)" ;
+
+    include "level3(caps_switch)"
+
+    key <SPCE> { [        space,       space,     Return              ] } ;
+
+    // As a general rule we try to not change any key behaviour
+    // compared to the default us layout, unless the user triggers the
+    // half-qwerty layout. This tilde=backspace mapping breaks the
+    // rule, because caps+tilde to correct a mistake is too cumbersome
+    // to press.
+    key <TLDE> { [    BackSpace,  asciitilde,      grave,  asciitilde ] } ;
+};
+
+partial modifier_keys
+xkb_symbols "space" {
+
+    // This layout is optimized for configurations where the space bar
+    // is used as a level three shift.
+    //
+    // Special mappings in this variant are:
+    //
+    //    |----------------------+-----------|
+    //    | KEY                  | FUNCTION  |
+    //    |----------------------+-----------|
+    //    | caps                 | return    |
+    //    | space + caps         | '         |
+    //    | shift + space + caps | "         |
+    //    | tab                  | tab       |
+    //    | space + tab          | backspace |
+    //    |----------------------+-----------|
+    //
+    // There are two known two practical ways of using the space bar
+    // as a level3 shift modifier:
+    //
+    // 1. Using a modified X input driver
+    //
+    // See the at-home-modifier wiki page for more information:
+    //   https://gitlab.com/at-home-modifier/at-home-modifier-evdev/wikis/home
+    //
+    // The halfqwerty(space) layout assumes a transmod setting mapping
+    // the space bar to ISO_Level3_Shift:
+    //
+    //   Option "TransMod" "65:92"
+    //
+    // You should consider enabling the delay option to allow key
+    // roll-over (i.e. pressing x before releasing space) when doing
+    // fast two-handed typing:
+    //
+    //   Option "AhmDelay" "65"
+    //
+    // With or without this option, you'll need some time to get used
+    // to one- or two-handed typing with the transmod option
+    // enabled. Keep in mind that pressing space along with a regular
+    // key triggering the mirrored layout is the sole purpose of this
+    // setup.
+    //
+    // 2. Using "userland" tooling like xcape
+    //
+    // See the examples section on https://github.com/alols/xcape, the
+    // example shows how to configure a dual space/control function
+    // for the space bar. The same trick could be used to define a
+    // dual space/iso_level3_shift function. There are many ways to do
+    // that, for example: instead of using xmodmap to map Control to
+    // Hyper_L, map Mod5 to Hyper_L. Then use the 'lv3:ralt_switch'
+    // keyboard option in your X config or alternatively, select
+    // 'Right Alt' under 'Key to choose 3rd level' in your desktop
+    // environments keyboard settings.
+    //
+    // Note that due to the nature of how tools like xcape work, it
+    // won't work well when typing fast unless you manage to take
+    // special care to release the space bar before pressing a regular
+    // key.
+
+    include "halfqwerty(basic)"
+
+    name[Group1] = "English (US, halfqwerty assuming space modifier)" ;
+
+    key <CAPS> {
+        type    [ Group1 ] = "THREE_LEVEL",
+
+        // When not using caps lock as a modifier, we can use it as a
+        // symmetrical counterpart to the apostrophe/quotedbl key.
+        symbols [ Group1 ] = [ Return, Return, apostrophe, quotedbl ],
+
+        // When mapping <CAPS> to a modifier like done in
+        // level3(caps_switch), <CAPS> no longer sets the caps lock
+        // state - exactly what we want.
+        //
+        // But in this variant we map <CAPS> to an ordinary key and
+        // XKB activates caps lock in those situations. Below line
+        // makes sure that <CAPS> triggers a Return without activating
+        // the caps lock state. I don't believe "none" is a valid
+        // value here, so please speak up if you know a better way to
+        // achieve this.
+        //
+        // This effectively disables caps lock when pressing enter,
+        // but it's unpolite to shout anyway.
+        actions [ Group1 ] = [ SetMods(mods=none) ]
+    } ;
+
+    key <TAB>  { [          Tab,         Tab,  BackSpace,   BackSpace ] } ;
+};
